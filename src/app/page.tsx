@@ -4,13 +4,13 @@ import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
 import emailjs from '@emailjs/browser';
 
 export default function Portfolio() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
