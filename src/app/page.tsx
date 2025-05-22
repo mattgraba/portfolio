@@ -1,103 +1,141 @@
-import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Github, Linkedin, Mail, Download } from "lucide-react";
+import { motion } from "framer-motion";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useState, ChangeEvent } from "react";
+import emailjs from '@emailjs/browser';
 
-export default function Home() {
+export default function Portfolio() {
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    emailjs.send(
+      'service_syby29s',      // EmailJS service ID
+      'template_rpjr5tn',     // EmailJS template ID
+      form,                   // This should match your template fields
+      '6eg3hbmJ_xzdl7_6I'       // Replace with your EmailJS public key
+    )
+    .then(() => {
+      alert("Thanks for reaching out, Matt will get back to you soon!");
+      setForm({ name: '', email: '', message: '' });
+    })
+    .catch((error) => {
+      console.error('EmailJS Error:', error);
+      alert("Oops, something went wrong. Please try again later.");
+    });
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+    <main className="max-w-5xl mx-auto px-6 py-12 space-y-16">
+      {/* Hero Section */}
+      <motion.section 
+        initial={{ opacity: 0, y: -20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.8 }}
+        className="text-center space-y-4"
+      >
+        <h1 className="text-5xl font-bold text-primary">Matt Graba</h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          I'm a passionate and creative designer who loves building beautiful, user-focused digital experiences. My mission is to help others bring their visions to life so they can follow their dreams.
+        </p>
+        <div className="flex justify-center gap-6 pt-2">
+          <a href="https://www.linkedin.com/in/matthew-graba-698266238/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <Linkedin className="h-6 w-6 hover:text-primary" />
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+          <a href="https://github.com/mattgraba" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <Github className="h-6 w-6 hover:text-primary" />
+          </a>
+          <a href="mailto:matt.graba14@gmail.com" aria-label="Email">
+            <Mail className="h-6 w-6 hover:text-primary" />
+          </a>
+          <a href="/Matt_Graba_Resume.pdf" download aria-label="Download Resume">
+            <Download className="h-6 w-6 hover:text-primary" />
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </motion.section>
+
+      {/* Skills Section */}
+      <motion.section 
+        initial={{ opacity: 0 }} 
+        whileInView={{ opacity: 1 }} 
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl font-semibold mb-6 text-center">Technical Skills</h2>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center text-muted-foreground">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Node.js</li>
+          <li>Git</li>
+          <li>REST APIs</li>
+          <li>Responsive Design</li>
+          <li>UI/UX Principles</li>
+          <li>Tailwind CSS</li>
+          <li>Next.js</li>
+          <li>Figma</li>
+        </ul>
+      </motion.section>
+
+      {/* Projects Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl font-semibold mb-6 text-center">Projects</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card className="rounded-2xl shadow-md">
+            <CardContent className="p-6 space-y-2">
+              <h3 className="text-xl font-bold">[Project 1 Placeholder]</h3>
+              <p className="text-sm text-muted-foreground">Short description here...</p>
+            </CardContent>
+          </Card>
+
+          <Card className="rounded-2xl shadow-md">
+            <CardContent className="p-6 space-y-2">
+              <h3 className="text-xl font-bold">[Project 2 Placeholder]</h3>
+              <p className="text-sm text-muted-foreground">Short description here...</p>
+            </CardContent>
+          </Card>
+
+          <Card className="rounded-2xl shadow-md">
+            <CardContent className="p-6 space-y-2">
+              <h3 className="text-xl font-bold">[Project 3 Placeholder]</h3>
+              <p className="text-sm text-muted-foreground">Short description here...</p>
+            </CardContent>
+          </Card>
+        </div>
+      </motion.section>
+
+      {/* Contact Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="space-y-6"
+      >
+        <h2 className="text-3xl font-semibold text-center">Contact Me</h2>
+        <form onSubmit={handleSubmit} className="space-y-4 max-w-xl mx-auto">
+          <Input name="name" placeholder="Your Name" value={form.name} onChange={handleChange} required />
+          <Input name="email" type="email" placeholder="Your Email" value={form.email} onChange={handleChange} required />
+          <Textarea name="message" placeholder="Your Message" value={form.message} onChange={handleChange} rows={5} required />
+          <div className="text-center">
+            <Button type="submit">Send Message</Button>
+          </div>
+        </form>
+      </motion.section>
+    </main>
   );
 }
