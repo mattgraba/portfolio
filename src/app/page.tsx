@@ -46,7 +46,7 @@ export default function Portfolio() {
       >
         <h1 className="text-5xl font-bold text-primary">Matt Graba</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          I'm a passionate and creative designer who loves building beautiful, user-focused digital experiences. My mission is to help others bring their visions to life so they can follow their dreams.
+          I&apos;m a passionate and creative designer who loves building beautiful, user-focused digital experiences. My mission is to help others bring their visions to life so they can follow their dreams.
         </p>
         <div className="flex justify-center gap-6 pt-2">
           <a href="https://www.linkedin.com/in/matthew-graba-698266238/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
