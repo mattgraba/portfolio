@@ -58,7 +58,7 @@ export default function Portfolio() {
           <a href="mailto:matt.graba14@gmail.com" aria-label="Email">
             <Mail className="h-6 w-6 hover:text-primary" />
           </a>
-          <a href="/Matt_Graba_Resume.pdf" download aria-label="Download Resume">
+          <a href="/Matthew_Graba_Resume_2025.pdf" download aria-label="Download Resume">
             <Download className="h-6 w-6 hover:text-primary" />
           </a>
         </div>
