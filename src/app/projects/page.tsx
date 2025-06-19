@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { User, Code, FolderGit2, Mail } from "lucide-react";
+import { User, Code, Mail } from "lucide-react";
 import Link from "next/link";
 
 const TABS = [
@@ -16,8 +15,6 @@ const TABS = [
 ];
 
 export default function Projects() {
-  const router = useRouter();
-
   const projects = [
     {
       title: "AI Dev Debugging Assistant Tool",

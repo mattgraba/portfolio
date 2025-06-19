@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { User, Code, FolderGit2, Mail } from "lucide-react";
+import { Code, FolderGit2, Mail } from "lucide-react";
 import Link from "next/link";
 
 const TABS = [
@@ -13,8 +12,6 @@ const TABS = [
 ];
 
 export default function About() {
-  const router = useRouter();
-
   return (
     <main className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}

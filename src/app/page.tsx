@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { User, Code, FolderGit2, Mail, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
+import { User, Code, FolderGit2, Mail, Github, Linkedin } from "lucide-react";
 
 const TABS = [
   { label: "About", path: "/about", icon: User },
@@ -13,8 +12,6 @@ const TABS = [
 ];
 
 export default function Home() {
-  const router = useRouter();
-
   return (
     <main className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}
