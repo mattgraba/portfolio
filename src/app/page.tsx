@@ -1,143 +1,69 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download } from "lucide-react";
-import { motion } from "framer-motion";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useState, ChangeEvent, FormEvent } from "react";
-import emailjs from '@emailjs/browser';
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { User, Code, FolderGit2, Mail, Github, Linkedin } from "lucide-react";
 
-export default function Portfolio() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+const TABS = [
+  { label: "About", path: "/about", icon: User },
+  { label: "Skills", path: "/skills", icon: Code },
+  { label: "Projects", path: "/projects", icon: FolderGit2 },
+  { label: "Contact", path: "/contact", icon: Mail },
+];
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  
-    emailjs.send(
-      'service_syby29s',      // EmailJS service ID
-      'template_rpjr5tn',     // EmailJS template ID
-      form,                   // This should match your template fields
-      '6eg3hbmJ_xzdl7_6I'       // Replace with your EmailJS public key
-    )
-    .then(() => {
-      alert("Thanks for reaching out, Matt will get back to you soon!");
-      setForm({ name: '', email: '', message: '' });
-    })
-    .catch((error) => {
-      console.error('EmailJS Error:', error);
-      alert("Oops, something went wrong. Please try again later.");
-    });
-  };
+export default function Home() {
+  const router = useRouter();
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-12 space-y-16">
-      {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: -20 }} 
-        animate={{ opacity: 1, y: 0 }} 
-        transition={{ duration: 0.8 }}
-        className="text-center space-y-4"
-      >
-        <h1 className="text-5xl font-bold text-primary">Matt Graba</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          I&apos;m a creative developer with an eye for clean aesthetics and intuitive experiences. I enjoy bringing ideas to life through code and design, whether it&apos;s building something new or improving what already exists.
-        </p>
-        <div className="flex justify-center gap-6 pt-2">
-          <a href="https://www.linkedin.com/in/matthew-graba-698266238/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <Linkedin className="h-6 w-6 hover:text-primary" />
+    <main className="relative w-full h-screen overflow-hidden">
+      {/* Background Image */}
+      <Image
+        src="/images/home.jpg"
+        alt="Abstract tech background"
+        fill
+        className="object-cover z-0"
+        priority
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/40">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg tracking-tight">
+          Matt Graba <span className="text-green-400">| Software Engineer Portfolio</span>
+        </h1>
+        {/* Social Icons */}
+        <div className="flex gap-6 mb-8">
+          <a
+            href="https://github.com/mattgraba"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="hover:text-green-400 transition-colors"
+          >
+            <Github className="w-8 h-8 md:w-10 md:h-10" />
           </a>
-          <a href="https://github.com/mattgraba" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <Github className="h-6 w-6 hover:text-primary" />
-          </a>
-          <a href="mailto:matt.graba14@gmail.com" aria-label="Email">
-            <Mail className="h-6 w-6 hover:text-primary" />
-          </a>
-          <a href="/Matthew_Graba_Resume_2025.pdf" download aria-label="Download Resume">
-            <Download className="h-6 w-6 hover:text-primary" />
+          <a
+            href="https://linkedin.com/in/matthew-graba-698266238"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="hover:text-green-400 transition-colors"
+          >
+            <Linkedin className="w-8 h-8 md:w-10 md:h-10" />
           </a>
         </div>
-      </motion.section>
-
-      {/* Skills Section */}
-      <motion.section 
-        initial={{ opacity: 0 }} 
-        whileInView={{ opacity: 1 }} 
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="text-3xl font-semibold mb-6 text-center">Technical Skills</h2>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center text-muted-foreground">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>React</li>
-          <li>Node.js</li>
-          <li>Git</li>
-          <li>REST APIs</li>
-          <li>Responsive Design</li>
-          <li>UI/UX Principles</li>
-          <li>Tailwind CSS</li>
-          <li>Next.js</li>
-          <li>Figma</li>
-        </ul>
-      </motion.section>
-
-      {/* Projects Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="text-3xl font-semibold mb-6 text-center">Projects</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card className="rounded-2xl shadow-md">
-            <CardContent className="p-6 space-y-2">
-              <h3 className="text-xl font-bold">[Project 1 Placeholder]</h3>
-              <p className="text-sm text-muted-foreground">Short description here...</p>
-            </CardContent>
-          </Card>
-
-          <Card className="rounded-2xl shadow-md">
-            <CardContent className="p-6 space-y-2">
-              <h3 className="text-xl font-bold">[Project 2 Placeholder]</h3>
-              <p className="text-sm text-muted-foreground">Short description here...</p>
-            </CardContent>
-          </Card>
-
-          <Card className="rounded-2xl shadow-md">
-            <CardContent className="p-6 space-y-2">
-              <h3 className="text-xl font-bold">[Project 3 Placeholder]</h3>
-              <p className="text-sm text-muted-foreground">Short description here...</p>
-            </CardContent>
-          </Card>
+        <div className="flex flex-wrap gap-10 justify-center">
+          {TABS.map((tab) => (
+            <button
+              key={tab.path}
+              onClick={() => router.push(tab.path)}
+              className="flex flex-col items-center px-8 py-6 rounded-xl bg-white/20 hover:bg-white/40 text-xl text-white font-semibold shadow-lg backdrop-blur transition-all duration-200 min-w-[120px]"
+            >
+              <tab.icon className="w-12 h-12 mb-3 text-green-400" />
+              {tab.label}
+            </button>
+          ))}
         </div>
-      </motion.section>
-
-      {/* Contact Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="space-y-6"
-      >
-        <h2 className="text-3xl font-semibold text-center">Contact Me</h2>
-        <form onSubmit={handleSubmit} className="space-y-4 max-w-xl mx-auto">
-          <Input name="name" placeholder="Your Name" value={form.name} onChange={handleChange} required />
-          <Input name="email" type="email" placeholder="Your Email" value={form.email} onChange={handleChange} required />
-          <Textarea name="message" placeholder="Your Message" value={form.message} onChange={handleChange} rows={5} required />
-          <div className="text-center">
-            <Button type="submit">Send Message</Button>
-          </div>
-        </form>
-      </motion.section>
+      </div>
     </main>
   );
 }

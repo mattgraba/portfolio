@@ -1,34 +1,80 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { User, Code, FolderGit2, Mail } from "lucide-react";
+
+const TABS = [
+  { label: "About", path: "/about", icon: User },
+  { label: "Skills", path: "/skills", icon: Code },
+  { label: "Projects", path: "/projects", icon: FolderGit2 },
+  { label: "Contact", path: "/contact", icon: Mail },
+];
 
 export default function About() {
-  return (
-    <main className="max-w-5xl mx-auto px-6 py-12 space-y-8">
-      <motion.section
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="space-y-6"
-      >
-        <h1 className="text-4xl font-bold text-primary">About Me</h1>
-        <div className="prose dark:prose-invert max-w-none">
-          <p className="text-lg">
-            Hey! I&apos;m Matt, a 23-year-old developer who believes in the perfect blend of form and function. 
-            When I&apos;m not crafting code, you might find me [Your interests/hobbies here].
-          </p>
-          
-          <h2 className="text-2xl font-semibold mt-8">My Journey</h2>
-          <p>
-            [Your background, education, and what led you to development]
-          </p>
+  const router = useRouter();
 
-          <h2 className="text-2xl font-semibold mt-8">What Drives Me</h2>
-          <p>
-            [Your motivations, goals, and what you're passionate about in tech]
-          </p>
-        </div>
-      </motion.section>
+  return (
+    <main className="relative w-full h-screen overflow-hidden">
+      {/* Background Image */}
+      <Image
+        src="/images/home.jpg"
+        alt="Contact background"
+        fill
+        className="object-cover z-0"
+        priority
+      />
+      {/* Overlay content */}
+      <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/40">
+        <motion.section
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-6 max-w-5xl px-6 py-12"
+        >
+          <h1 className="text-4xl font-bold text-white">About Me</h1>
+          <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 text-center text-white mb-6">
+            <p className="text-lg">
+            Welcome to my portfolio. My name is Matt, and I am a 23-year-old aspiring software engineer with a passion for combining creativity and problem-solving through full-stack development. I am highly self-motivated and dedicated to continuously expanding my technical expertise. I thrive on learning new technologies and actively seek opportunities to gain hands-on experience in innovative environments.
+            </p>
+          </div>
+          <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 prose dark:prose-invert max-w-none text-white flex flex-col gap-4 items-center">
+            <h2 className="text-2xl font-semibold mt-8">Education</h2>
+            <div className="text-left w-full max-w-xl mx-auto">
+              <p className="mb-2">
+                <strong>University of Minnesota - Twin Cities</strong><br />
+                Bachelor&apos;s Degree in Computer Science, December 2024
+              </p>
+              <p className="mb-2 pl-4">
+                <em>Relevant Coursework:</em><br />
+                <span className="pl-4 block">Software Engineering, Program Design &amp; Development, Artificial Intelligence,</span>
+                <span className="pl-4 block">Advanced Programming Concepts, Algorithms &amp; Data Structures,</span>
+                <span className="pl-4 block">Machine Architecture, Computer Architecture, Introduction to Operating Systems</span>
+              </p>
+            </div>
+            <a
+              href="/resume/Matthew_Graba_Resume_2025-4.pdf"
+              download
+              className="mt-2 inline-block px-6 py-2 rounded-lg bg-green-900 hover:bg-green-800 text-white font-semibold shadow transition-all duration-200"
+            >
+              Download Resume (PDF)
+            </a>
+          </div>
+          <div className="flex flex-wrap gap-10 justify-center mt-10">
+            {TABS.map((tab) => (
+              <button
+                key={tab.path}
+                onClick={() => router.push(tab.path)}
+                className="flex flex-col items-center px-8 py-6 rounded-xl bg-white/20 hover:bg-white/40 text-xl text-white font-semibold shadow-lg backdrop-blur transition-all duration-200 min-w-[120px]"
+              >
+                <tab.icon className="w-12 h-12 mb-3 text-green-400" />
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </motion.section>
+      </div>
     </main>
   );
 } 

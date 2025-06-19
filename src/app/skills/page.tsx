@@ -1,75 +1,74 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 
 export default function Skills() {
-  const skillCategories = [
-    {
-      title: "Frontend Development",
-      skills: [
-        { name: "React", level: "Advanced" },
-        { name: "Next.js", level: "Intermediate" },
-        { name: "HTML/CSS", level: "Advanced" },
-        { name: "JavaScript", level: "Advanced" },
-      ]
-    },
-    {
-      title: "UI/UX & Design",
-      skills: [
-        { name: "Tailwind CSS", level: "Advanced" },
-        { name: "Figma", level: "Intermediate" },
-        { name: "Responsive Design", level: "Advanced" },
-        { name: "UI/UX Principles", level: "Intermediate" },
-      ]
-    },
-    {
-      title: "Backend & Tools",
-      skills: [
-        { name: "Node.js", level: "Intermediate" },
-        { name: "Git", level: "Intermediate" },
-        { name: "REST APIs", level: "Intermediate" },
-      ]
-    }
-  ];
-
   return (
-    <main className="max-w-5xl mx-auto px-6 py-12 space-y-12">
-      <motion.section
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="space-y-6"
-      >
-        <h1 className="text-4xl font-bold text-primary">Technical Skills</h1>
-        <p className="text-lg text-muted-foreground">
-          Here&apos;s a detailed overview of my technical capabilities and expertise levels.
-        </p>
-      </motion.section>
-
-      <div className="grid gap-8">
-        {skillCategories.map((category, index) => (
-          <motion.div
-            key={category.title}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <h2 className="text-2xl font-semibold mb-4">{category.title}</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {category.skills.map((skill) => (
-                <Card key={skill.name}>
-                  <CardContent className="p-4">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+    <main className="relative w-full h-screen overflow-hidden">
+      {/* Background Image */}
+      <Image
+        src="/images/home.jpg"
+        alt="Skills background"
+        fill
+        className="object-cover z-0"
+        priority
+      />
+      {/* Overlay content */}
+      <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/40">
+        <motion.section
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-6 max-w-3xl px-6 py-12 text-center"
+        >
+          <h1 className="text-4xl font-bold text-white mb-8">Technical Skills</h1>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+            <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10">
+              <h2 className="text-2xl font-semibold mb-4">Languages</h2>
+              <ul className="space-y-2">
+                <li>Java</li>
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>SQL</li>
+                <li>C</li>
+                <li>C++</li>
+                <li>C#</li>
+                <li>OCaml</li>
+                <li>Assembly</li>
+              </ul>
             </div>
-          </motion.div>
-        ))}
+            <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10">
+              <h2 className="text-2xl font-semibold mb-4">Tools & Technologies</h2>
+              <ul className="space-y-2">
+                <li>Git</li>
+                <li>Docker</li>
+                <li>Linux</li>
+                <li>REST APIs</li>
+                <li>Agile (Scrum)</li>
+                <li>UML</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>Express</li>
+                <li>MongoDB</li>
+                <li>JUnit</li>
+                <li>Postman</li>
+              </ul>
+            </div>
+            <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10">
+              <h2 className="text-2xl font-semibold mb-4">Concepts</h2>
+              <ul className="space-y-2">
+                <li>Object-Oriented Design</li>
+                <li>Relational Databases</li>
+                <li>Client-Server Architecture</li>
+                <li>Software Design Patterns (Observer, Decorator)</li>
+                <li>Agile Development</li>
+                <li>SDLC</li>
+                <li>Unit Testing</li>
+              </ul>
+            </div>
+          </div>
+        </motion.section>
       </div>
     </main>
   );
