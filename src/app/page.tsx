@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { User, Code, FolderGit2, Mail, Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 const TABS = [
   { label: "About", path: "/about", icon: User },
@@ -53,14 +54,14 @@ export default function Home() {
         </div>
         <div className="flex flex-wrap gap-10 justify-center">
           {TABS.map((tab) => (
-            <button
+            <Link
               key={tab.path}
-              onClick={() => router.push(tab.path)}
+              href={tab.path}
               className="flex flex-col items-center px-8 py-6 rounded-xl bg-white/20 hover:bg-white/40 text-xl text-white font-semibold shadow-lg backdrop-blur transition-all duration-200 min-w-[120px]"
             >
               <tab.icon className="w-12 h-12 mb-3 text-green-400" />
               {tab.label}
-            </button>
+            </Link>
           ))}
         </div>
       </div>
