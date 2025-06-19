@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -13,6 +13,41 @@ interface Scene {
 
 interface ScrollScenesProps {
   scenes: Scene[];
+}
+
+// Helper to generate transforms for each scene
+function useSceneTransforms(
+  scrollYProgress: MotionValue<number>,
+  scenesCount: number
+) {
+  return Array.from({ length: scenesCount }).map((_, index) => {
+    const yProgress = useTransform(
+      scrollYProgress,
+      [index / scenesCount, (index + 1) / scenesCount],
+      [0, 1]
+    );
+    // All transforms needed for a scene
+    return {
+      yProgress,
+      opacity: useTransform(yProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]),
+      scale: useTransform(yProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]),
+      y: useTransform(yProgress, [0, 1], ['50px', '-50px']),
+      titleY: useTransform(yProgress, [0, 0.3, 0.7, 1], [30, 0, 0, -30]),
+      descY: useTransform(yProgress, [0, 0.3, 0.7, 1], [20, 0, 0, -20]),
+      ctaY: useTransform(yProgress, [0, 0.3, 0.7, 1], [10, 0, 0, -10]),
+      maskClip: useTransform(
+        yProgress,
+        [0, 0.5, 1],
+        [
+          'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
+          'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)'
+        ]
+      ),
+      parallaxY: useTransform(yProgress, [0, 1], ['0%', '10%']),
+      imageOpacity: useTransform(yProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]),
+    };
+  });
 }
 
 const ImageBackground = ({ 
@@ -78,6 +113,8 @@ export const ScrollScenes: React.FC<ScrollScenesProps> = ({ scenes }) => {
     offset: ['start start', 'end end']
   });
 
+  const transforms = useSceneTransforms(scrollYProgress, scenes.length);
+
   const handleNavigate = (path: string) => {
     router.push(path);
   };
@@ -91,12 +128,6 @@ export const ScrollScenes: React.FC<ScrollScenesProps> = ({ scenes }) => {
       }}
     >
       {scenes.map((scene, index) => {
-        const yProgress = useTransform(
-          scrollYProgress,
-          [index / scenes.length, (index + 1) / scenes.length],
-          [0, 1]
-        );
-
         return (
           <motion.div
             key={scene.id}
@@ -111,16 +142,16 @@ export const ScrollScenes: React.FC<ScrollScenesProps> = ({ scenes }) => {
           >
             <ImageBackground 
               image={scene.backgroundImage} 
-              progress={yProgress}
+              progress={transforms[index].yProgress}
               isCurrentScene={true}
             />
             
             <motion.div 
               className="relative z-10 w-4/5 md:w-3/4 lg:w-2/3"
               style={{
-                opacity: useTransform(yProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]),
-                scale: useTransform(yProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]),
-                y: useTransform(yProgress, [0, 1], ['50px', '-50px']),
+                opacity: transforms[index].opacity,
+                scale: transforms[index].scale,
+                y: transforms[index].y,
               }}
             >
               <motion.div
@@ -135,7 +166,7 @@ export const ScrollScenes: React.FC<ScrollScenesProps> = ({ scenes }) => {
                 <motion.h2 
                   className="text-4xl font-bold mb-4 text-white"
                   style={{
-                    translateY: useTransform(yProgress, [0, 0.3, 0.7, 1], [30, 0, 0, -30]),
+                    translateY: transforms[index].titleY,
                   }}
                 >
                   {scene.title}
@@ -143,7 +174,7 @@ export const ScrollScenes: React.FC<ScrollScenesProps> = ({ scenes }) => {
                 <motion.p 
                   className="text-xl text-gray-200"
                   style={{
-                    translateY: useTransform(yProgress, [0, 0.3, 0.7, 1], [20, 0, 0, -20]),
+                    translateY: transforms[index].descY,
                   }}
                 >
                   {scene.description}
@@ -151,7 +182,7 @@ export const ScrollScenes: React.FC<ScrollScenesProps> = ({ scenes }) => {
                 <motion.div 
                   className="mt-6"
                   style={{
-                    translateY: useTransform(yProgress, [0, 0.3, 0.7, 1], [10, 0, 0, -10]),
+                    translateY: transforms[index].ctaY,
                   }}
                 >
                   <span className="text-white/70 text-sm">Click to explore →</span>
