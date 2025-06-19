@@ -26,7 +26,7 @@ export default function Home() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 flex flex-col justify-start items-center z-10 bg-black/40 pt-8">
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/40 min-h-screen">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg tracking-tight">
           Matt Graba <span className="text-green-400">| Software Engineer Portfolio</span>
         </h1>
