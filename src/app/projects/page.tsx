@@ -45,7 +45,7 @@ export default function Projects() {
         priority
       />
       {/* Overlay content */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/40 min-h-screen">
+      <div className="absolute inset-0 flex flex-col justify-start items-center z-10 bg-black/40 pt-8">
         <motion.section
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -39,7 +39,7 @@ export default function Contact() {
       />
 
       {/* Overlay content */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/40 min-h-screen">
+      <div className="absolute inset-0 flex flex-col justify-start items-center z-10 bg-black/40 pt-8">
         <div className="w-full max-w-lg bg-white/20 backdrop-blur rounded-xl p-8 shadow-lg">
           <h1 className="text-4xl font-bold text-white mb-8 text-center">Contact</h1>
           {submitted ? (
