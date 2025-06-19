@@ -28,7 +28,7 @@ export default function Contact() {
   };
 
   return (
-    <main className="relative w-full h-screen overflow-hidden">
+    <main className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}
       <Image
         src="/images/home.jpg"
@@ -39,7 +39,7 @@ export default function Contact() {
       />
 
       {/* Overlay content */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/40">
+      <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/40 min-h-screen">
         <div className="w-full max-w-lg bg-white/20 backdrop-blur rounded-xl p-8 shadow-lg">
           <h1 className="text-4xl font-bold text-white mb-8 text-center">Contact</h1>
           {submitted ? (

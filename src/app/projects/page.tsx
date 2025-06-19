@@ -35,7 +35,7 @@ export default function Projects() {
   ];
 
   return (
-    <main className="relative w-full h-screen overflow-hidden">
+    <main className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}
       <Image
         src="/images/home.jpg"
@@ -45,7 +45,7 @@ export default function Projects() {
         priority
       />
       {/* Overlay content */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/40">
+      <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/40 min-h-screen">
         <motion.section
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

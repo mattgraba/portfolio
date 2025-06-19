@@ -15,7 +15,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="relative w-full h-screen overflow-hidden">
+    <main className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}
       <Image
         src="/images/home.jpg"
@@ -26,7 +26,7 @@ export default function Home() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/40">
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/40 min-h-screen">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg tracking-tight">
           Matt Graba <span className="text-green-400">| Software Engineer Portfolio</span>
         </h1>
