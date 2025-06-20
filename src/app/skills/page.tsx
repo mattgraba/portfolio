@@ -13,7 +13,7 @@ const TABS = [
 
 export default function Skills() {
   return (
-    <main className="relative w-full min-h-screen overflow-hidden">
+    <main id="main-content" className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}
       <Image
         src="/images/home.jpg"
@@ -76,15 +76,16 @@ export default function Skills() {
               </ul>
             </div>
           </div>
-          <div className="flex flex-wrap gap-10 justify-center mt-10">
+          <div className="flex flex-wrap gap-10 justify-center mt-10" role="navigation" aria-label="Page navigation">
             {TABS.map((tab) => (
               <Link
                 key={tab.path}
                 href={tab.path}
                 className="flex flex-col items-center px-8 py-6 rounded-xl bg-white/20 hover:bg-white/40 text-xl text-white font-semibold shadow-lg backdrop-blur transition-all duration-200 min-w-[120px]"
+                aria-label={`Navigate to ${tab.label} page`}
               >
-                <tab.icon className="w-12 h-12 mb-3 text-green-400" />
-                {tab.label}
+                <tab.icon className="w-12 h-12 mb-3 text-green-400" aria-hidden="true" />
+                <span>{tab.label}</span>
               </Link>
             ))}
           </div>
