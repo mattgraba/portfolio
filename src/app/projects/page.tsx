@@ -28,7 +28,7 @@ export default function Projects() {
       title: "Voting Software System",
       description: "Java, Agile Scrum, GUI. Collaborated in a team using Agile Scrum to develop an extensible voting system for multiple election types. Created product backlog and contributed to sprint planning. Developed user-friendly GUI and results table.",
       technologies: ["Java", "Agile", "Scrum", "GUI"],
-      github: "",
+      github: "https://github.com/mattgraba/Voting-Software-System",
       live: "",
       image: ""
     },
@@ -36,7 +36,7 @@ export default function Projects() {
       title: "Drone Package Delivery Simulation",
       description: "C++, Docker, UML, Design Patterns. Simulated a drone delivery system using Observer and Decorator patterns for modular design. Integrated battery management and theft prevention. Collaborated on GitHub and deployed via Docker. Designed UML diagrams and wrote unit tests.",
       technologies: ["C++", "Docker", "UML", "Design Patterns", "Unit Testing", "GitHub"],
-      github: "",
+      github: "https://github.com/mattgraba/Drone-Package-Delivery-Simulation",
       live: "",
       image: ""
     },
