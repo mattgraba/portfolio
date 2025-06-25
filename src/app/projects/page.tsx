@@ -18,7 +18,7 @@ export default function Projects() {
   const projects = [
     {
       title: "AI Dev Debugging Assistant Tool",
-      description: "Full Stack SaaS | Java, JavaScript, React, Express, MongoDB. Lead developer of a full-stack debugging assistant tool to help developers troubleshoot errors using NLP-based AI. Built backend with Express/Node.js and RESTful APIs. Developed React frontend with real-time form handling. Integrated MongoDB for error storage and retrieval. Practiced Agile, unit testing, and Docker deployment.",
+      description: "Full Stack SaaS | Java, JavaScript, React, Express, MongoDB. Lead developer of a full-stack debugging assistant tool to help developers troubleshoot errors using NLP-based AI. Built backend with Express/Node.js and RESTful APIs. Developed React frontend with real-time form handling. Integrated MongoDB for error storage and retrieval. Practiced Agile, unit testing, and Docker deployment. Contact me to view the private github repo (startup privacy).",
       technologies: ["Java", "JavaScript", "React", "Express", "MongoDB", "Node.js", "Docker", "Agile", "Jest", "Postman"],
       github: "https://github.com/mattgraba/dev-helper-ai",
       live: "",
@@ -26,7 +26,7 @@ export default function Projects() {
     },
     {
       title: "Voting Software System",
-      description: "Java, Agile Scrum, GUI. Collaborated in a team using Agile Scrum to develop an extensible voting system for multiple election types. Created product backlog and contributed to sprint planning. Developed user-friendly GUI and results table.",
+      description: "Java, Agile Scrum, GUI. Collaborated in a team using Agile Scrum to develop an extensible voting system for multiple election types. Created product backlog and contributed to sprint planning. Developed user-friendly GUI and results table. Contact me to view the private github repo (Shared project via University of Minnesota).",
       technologies: ["Java", "Agile", "Scrum", "GUI"],
       github: "https://github.com/mattgraba/Voting-Software-System",
       live: "",
@@ -34,7 +34,7 @@ export default function Projects() {
     },
     {
       title: "Drone Package Delivery Simulation",
-      description: "C++, Docker, UML, Design Patterns. Simulated a drone delivery system using Observer and Decorator patterns for modular design. Integrated battery management and theft prevention. Collaborated on GitHub and deployed via Docker. Designed UML diagrams and wrote unit tests.",
+      description: "C++, Docker, UML, Design Patterns. Simulated a drone delivery system using Observer and Decorator patterns for modular design. Integrated battery management and theft prevention. Collaborated on GitHub and deployed via Docker. Designed UML diagrams and wrote unit tests. Contact me to view the private github repo (Shared project via University of Minnesota).",
       technologies: ["C++", "Docker", "UML", "Design Patterns", "Unit Testing", "GitHub"],
       github: "https://github.com/mattgraba/Drone-Package-Delivery-Simulation",
       live: "",
