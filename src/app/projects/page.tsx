@@ -104,6 +104,19 @@ export default function Projects() {
               </motion.div>
             ))}
           </div>
+          
+          {/* Add your sentence here */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-center mt-8"
+          >
+            <p className="text-white text-lg">
+              Note: Additional completed projects will be added soon.
+            </p>
+          </motion.div>
+          
           <div className="flex flex-wrap gap-10 justify-center mt-10" role="navigation" aria-label="Page navigation">
             {TABS.map((tab) => (
               <Link
