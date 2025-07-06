@@ -18,7 +18,7 @@ export default function Projects() {
   const projects = [
     {
       title: "AI Dev Debugging Assistant Tool",
-      description: "Full Stack SaaS | Java, JavaScript, React, Express, MongoDB. Lead developer of a full-stack debugging assistant tool to help developers troubleshoot errors using NLP-based AI. Built backend with Express/Node.js and RESTful APIs. Developed React frontend with real-time form handling. Integrated MongoDB for error storage and retrieval. Practiced Agile, unit testing, and Docker deployment. Contact me to view the private github repo (startup privacy).",
+      description: "Full Stack SaaS | Java, JavaScript, React, Express, MongoDB. Lead developer of a full-stack debugging assistant tool to help developers troubleshoot errors using NLP-based AI. Built backend with Express/Node.js and RESTful APIs. Developed React frontend with real-time form handling. Integrated MongoDB for error storage and retrieval. Practiced Agile, unit testing, and Docker deployment.",
       technologies: ["Java", "JavaScript", "React", "Express", "MongoDB", "Node.js", "Docker", "Agile", "Jest", "Postman"],
       github: "https://github.com/mattgraba/dev-helper-ai",
       live: "",
