@@ -17,8 +17,8 @@ const TABS = [
 export default function Projects() {
   const projects = [
     {
-      title: "AI Dev Debugging Assistant Tool",
-      description: "Full Stack SaaS | Java, JavaScript, React, Express, MongoDB. Lead developer of a full-stack debugging assistant tool to help developers troubleshoot errors using NLP-based AI. Built backend with Express/Node.js and RESTful APIs. Developed React frontend with real-time form handling. Integrated MongoDB for error storage and retrieval. Practiced Agile, unit testing, and Docker deployment.",
+      title: "Dev Helper AI – Full-Stack Debugging Assistant",
+      description: "Full Stack SaaS | JavaScript, React, Node.js, Express, MongoDB, Docker, Jest. Designed and led development of an AI-powered debugging assistant to streamline error resolution during development. Built a modular CLI and web interface that sends code errors to a custom Express backend, which forwards to OpenAI for analysis and suggested fixes. Integrated MongoDB for storing error-response history per user, with JWT authentication and token-secured CLI commands. Deployed via Docker and tested with Jest + Postman. Enables faster debugging and AI-assisted development directly from the terminal or browser.",
       technologies: ["Java", "JavaScript", "React", "Express", "MongoDB", "Node.js", "Docker", "Agile", "Jest", "Postman"],
       github: "https://github.com/mattgraba/dev-helper-ai",
       live: "",
