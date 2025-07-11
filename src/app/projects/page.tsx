@@ -17,7 +17,14 @@ const TABS = [
 export default function Projects() {
   const projects = [
     {
-      title: "Dev Helper AI – Full-Stack Debugging Assistant",
+      id: "dev-helper-ai",
+      title: (
+        <>
+          Dev Helper AI
+          <br />
+          Full-Stack Debugging Assistant
+        </>
+      ),
       description: "Full Stack SaaS | JavaScript, React, Node.js, Express, MongoDB, Docker, Jest. Designed and led development of an AI-powered debugging assistant to streamline error resolution during development. Built a modular CLI and web interface that sends code errors to a custom Express backend, which forwards to OpenAI for analysis and suggested fixes. Integrated MongoDB for storing error-response history per user, with JWT authentication and token-secured CLI commands. Deployed via Docker and tested with Jest + Postman. Enables faster debugging and AI-assisted development directly from the terminal or browser.",
       technologies: ["Java", "JavaScript", "React", "Express", "MongoDB", "Node.js", "Docker", "Agile", "Jest", "Postman"],
       github: "https://github.com/mattgraba/dev-helper-ai",
@@ -25,6 +32,7 @@ export default function Projects() {
       image: ""
     },
     {
+      id: "voting-software-system",
       title: "Voting Software System",
       description: "Java, Agile Scrum, GUI. Collaborated in a team using Agile Scrum to develop an extensible voting system for multiple election types. Created product backlog and contributed to sprint planning. Developed user-friendly GUI and results table. Contact me to view the private github repo (Shared project via University of Minnesota).",
       technologies: ["Java", "Agile", "Scrum", "GUI"],
@@ -33,6 +41,7 @@ export default function Projects() {
       image: ""
     },
     {
+      id: "drone-package-delivery-simulation",
       title: "Drone Package Delivery Simulation",
       description: "C++, Docker, UML, Design Patterns. Simulated a drone delivery system using Observer and Decorator patterns for modular design. Integrated battery management and theft prevention. Collaborated on GitHub and deployed via Docker. Designed UML diagrams and wrote unit tests. Contact me to view the private github repo (Shared project via University of Minnesota).",
       technologies: ["C++", "Docker", "UML", "Design Patterns", "Unit Testing", "GitHub"],
@@ -64,7 +73,7 @@ export default function Projects() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
-                key={project.title}
+                key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
