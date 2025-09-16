@@ -33,7 +33,7 @@ export default function About() {
           <h1 className="text-4xl font-bold text-white">About Me</h1>
           <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 text-center text-white mb-6">
             <p className="text-lg">
-            Hi, I'm Matt. I'm a software engineer passionate about blending creativity with problem-solving through full-stack development. I'm driven to keep leveling up my technical expertise, always curious about new technologies, and eager to build hands-on solutions that make an impact.
+            Hi, I&#39;m Matt. I&#39;m a software engineer passionate about blending creativity with problem-solving through full-stack development. I&#39;m driven to keep leveling up my technical expertise, always curious about new technologies, and eager to build hands-on solutions that make an impact.
             </p>
           </div>
           <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10 prose dark:prose-invert max-w-none text-white flex flex-col gap-4 items-center">

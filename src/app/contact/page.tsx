@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { Mail, Phone, User, Github, Linkedin } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);

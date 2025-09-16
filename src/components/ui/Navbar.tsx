@@ -16,13 +16,6 @@ export function Navbar() {
     document.documentElement.classList.toggle("dark", stored === "dark")
   }, [])
 
-  const toggleTheme = () => {
-    const next = theme === "light" ? "dark" : "light"
-    setTheme(next)
-    localStorage.setItem("theme", next)
-    document.documentElement.classList.toggle("dark", next === "dark")
-  }
-
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
