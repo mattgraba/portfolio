@@ -7,15 +7,21 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 
 export function Navbar() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("dark")
   const pathname = usePathname()
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme") || "light"
+    const stored = localStorage.getItem("theme") || "dark"
     setTheme(stored)
     document.documentElement.classList.toggle("dark", stored === "dark")
   }, [])
+
+  const toggleTheme = () => {
+    const next = theme === "light" ? "dark" : "dark"
+    setTheme(next)
+    localStorage.setItem("theme", next)
+    document.documentElement.classList.toggle("dark", next === "dark")
+  }
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -26,8 +32,8 @@ export function Navbar() {
   ]
 
   return (
-    <div className="sticky top-0 z-50 w-full px-4 py-2 backdrop-blur-sm bg-[oklch(0.205_0_0)] border-b border-[oklch(0.145_0_0)]">
-      <Menubar className="justify-between w-full border-none bg-black">
+    <div className="sticky top-0 z-50 w-full px-4 py-2 backdrop-blur-sm bg-background/80 border-b">
+      <Menubar className="justify-between w-full border-none">
         <div className="flex items-center gap-6">
           <Link href="/" className="font-bold text-xl">MG</Link>
           <nav className="hidden md:flex gap-6">
@@ -65,6 +71,11 @@ export function Navbar() {
 
         <div className="flex gap-2">
           <MenubarMenu>
+            <MenubarContent>
+              <MenubarItem onClick={toggleTheme}>
+                {theme === "dark" ? "🌙 Dark Mode" : "🌞 Light Mode"}
+              </MenubarItem>
+            </MenubarContent>
           </MenubarMenu>
         </div>
       </Menubar>
