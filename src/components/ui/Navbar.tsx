@@ -7,21 +7,12 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 
 export function Navbar() {
-  const [theme, setTheme] = useState("dark")
   const pathname = usePathname()
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme") || "dark"
-    setTheme(stored)
-    document.documentElement.classList.toggle("dark", stored === "dark")
+    // Always force dark mode
+    document.documentElement.classList.add("dark")
   }, [])
-
-  const toggleTheme = () => {
-    const next = theme === "light" ? "dark" : "dark"
-    setTheme(next)
-    localStorage.setItem("theme", next)
-    document.documentElement.classList.toggle("dark", next === "dark")
-  }
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -67,16 +58,6 @@ export function Navbar() {
               </MenubarContent>
             </MenubarMenu>
           </div>
-        </div>
-
-        <div className="flex gap-2">
-          <MenubarMenu>
-            <MenubarContent>
-              <MenubarItem onClick={toggleTheme}>
-                {theme === "dark" ? "🌙 Dark Mode" : "🌞 Light Mode"}
-              </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
         </div>
       </Menubar>
     </div>
