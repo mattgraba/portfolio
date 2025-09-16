@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 
 export function Navbar() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [theme, setTheme] = useState("light")
   const pathname = usePathname()
 
