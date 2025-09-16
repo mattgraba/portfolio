@@ -26,7 +26,7 @@ export function Navbar() {
   ]
 
   return (
-    <div className="sticky top-0 z-50 w-full px-4 py-2 backdrop-blur-sm bg-background/80 border-b">
+    <div className="sticky top-0 z-50 w-full px-4 py-2 backdrop-blur-sm bg-[oklch(0.205_0_0)] border-b border-[oklch(0.145_0_0)]">
       <Menubar className="justify-between w-full border-none">
         <div className="flex items-center gap-6">
           <Link href="/" className="font-bold text-xl">MG</Link>
