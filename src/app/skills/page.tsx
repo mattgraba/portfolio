@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { User, FolderGit2, Mail } from "lucide-react";
+import { User, FolderGit2, Mail, Code, Wrench, Lightbulb } from "lucide-react";
 import Link from "next/link";
 
 const TABS = [
@@ -28,54 +28,78 @@ export default function Skills() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-6 max-w-3xl px-6 py-12 text-center"
+          className="space-y-6 max-w-5xl px-6 py-12 text-center"
         >
           <h1 className="text-4xl font-bold text-white mb-8">Technical Skills</h1>
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-            <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4">Languages</h2>
-              <ul className="space-y-2">
-                <li>Java</li>
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li>SQL</li>
-                <li>C</li>
-                <li>C++</li>
-                <li>C#</li>
-                <li>OCaml</li>
-                <li>Assembly</li>
+            {/* Languages */}
+            <motion.div 
+              whileHover={{ scale: 1.03 }} 
+              className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10"
+            >
+              <h2 className="flex items-center gap-2 text-2xl font-semibold mb-4">
+                <Code className="w-6 h-6 text-green-400" /> Languages
+              </h2>
+              <div className="grid grid-cols-2 gap-6 text-left">
+                <div>
+                  <p className="font-bold text-green-400 mb-2">Primary</p>
+                  <ul className="space-y-1">
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>SQL</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-300 mb-2">Experienced</p>
+                  <ul className="space-y-1 text-gray-200/90">
+                    <li>C</li>
+                    <li>C++</li>
+                    <li>C#</li>
+                    <li>OCaml</li>
+                    <li>Assembly</li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Tools & Technologies */}
+            <motion.div 
+              whileHover={{ scale: 1.03 }} 
+              className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10"
+            >
+              <h2 className="flex items-center gap-2 text-2xl font-semibold mb-4">
+                <Wrench className="w-6 h-6 text-blue-400" /> Tools & Technologies
+              </h2>
+              <ul className="space-y-2 text-left">
+                <li>React, Node.js, Express, MongoDB</li>
+                <li>REST APIs, JWT Authentication</li>
+                <li>Git, Docker, Linux</li>
+                <li>Postman, JUnit</li>
               </ul>
-            </div>
-            <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4">Tools & Technologies</h2>
-              <ul className="space-y-2">
-                <li>Git</li>
-                <li>Docker</li>
-                <li>Linux</li>
-                <li>REST APIs</li>
-                <li>Agile (Scrum)</li>
-                <li>UML</li>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>Express</li>
-                <li>MongoDB</li>
-                <li>JUnit</li>
-                <li>Postman</li>
-              </ul>
-            </div>
-            <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4">Concepts</h2>
-              <ul className="space-y-2">
+            </motion.div>
+
+            {/* Concepts */}
+            <motion.div 
+              whileHover={{ scale: 1.03 }} 
+              className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10"
+            >
+              <h2 className="flex items-center gap-2 text-2xl font-semibold mb-4">
+                <Lightbulb className="w-6 h-6 text-yellow-400" /> Concepts
+              </h2>
+              <ul className="space-y-2 text-left">
                 <li>Object-Oriented Design</li>
-                <li>Relational Databases</li>
                 <li>Client-Server Architecture</li>
-                <li>Software Design Patterns (Observer, Decorator)</li>
-                <li>Agile Development</li>
-                <li>SDLC</li>
-                <li>Unit Testing</li>
+                <li>Software Design Patterns</li>
+                <li>System Design & SDLC</li>
+                <li>Unit Testing & QA</li>
+                <li>System & Process Documentation</li>
               </ul>
-            </div>
+            </motion.div>
           </div>
+
+          {/* Navigation Tabs */}
           <div className="flex flex-wrap gap-10 justify-center mt-10" role="navigation" aria-label="Page navigation">
             {TABS.map((tab) => (
               <Link
@@ -93,4 +117,4 @@ export default function Skills() {
       </div>
     </main>
   );
-} 
+}

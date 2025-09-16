@@ -71,12 +71,6 @@ export function Navbar() {
 
         <div className="flex gap-2">
           <MenubarMenu>
-            <MenubarTrigger>Settings</MenubarTrigger>
-            <MenubarContent>
-              <MenubarItem onClick={toggleTheme}>
-                {theme === "light" ? "🌙 Dark Mode" : "🌞 Light Mode"}
-              </MenubarItem>
-            </MenubarContent>
           </MenubarMenu>
         </div>
       </Menubar>
