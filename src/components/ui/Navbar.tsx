@@ -2,7 +2,7 @@
 "use client"
 
 import { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem } from "@/components/ui/menubar"
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 
