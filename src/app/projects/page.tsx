@@ -25,26 +25,84 @@ export default function Projects() {
           Full-Stack Debugging Assistant
         </>
       ),
-      description: "Full Stack SaaS | JavaScript, React, Node.js, Express, MongoDB, Docker, Jest. Designed and led development of an AI-powered debugging assistant to streamline error resolution during development. Built a modular CLI and web interface that sends code errors to a custom Express backend, which forwards to OpenAI for analysis and suggested fixes. Integrated MongoDB for storing error-response history per user, with JWT authentication and token-secured CLI commands. Deployed via Docker and tested with Jest + Postman. Enables faster debugging and AI-assisted development directly from the terminal or browser.",
-      technologies: ["Java", "JavaScript", "React", "Express", "MongoDB", "Node.js", "Docker", "Agile", "Jest", "Postman"],
+      description: "Designed and led development of an AI-powered debugging assistant that streamlines error resolution directly from the terminal or browser.",
+      bullets: [
+        "Built modular CLI + web interface → developers can submit code errors via command line or UI.",
+        "Engineered Express backend with JWT-secured APIs → forwards errors to OpenAI, validates responses, and enforces authentication.",
+        "Integrated MongoDB for per-user error history, enabling searchable, persistent debugging logs.",
+        "Ensured production readiness → layered schema validation, token-secured CLI commands, and Dockerized deployment.",
+        "Tested reliability with Jest unit tests and Postman integration flows."
+      ],
+      impact: "Reduced debugging time by providing AI-generated explanations and fixes within existing developer workflows.",
+      technologies: ["JavaScript", "React", "Express", "MongoDB", "Node.js", "Docker", "Jest", "Postman"],
       github: "https://github.com/mattgraba/dev-helper-ai",
       live: "",
       image: ""
     },
     {
-      id: "voting-software-system",
-      title: "Voting Software System",
-      description: "Java, Agile Scrum, GUI. Collaborated in a team using Agile Scrum to develop an extensible voting system for multiple election types. Created product backlog and contributed to sprint planning. Developed user-friendly GUI and results table. Contact me to view the private github repo (Shared project via University of Minnesota).",
-      technologies: ["Java", "Agile", "Scrum", "GUI"],
-      github: "https://github.com/mattgraba/Voting-Software-System",
+      id: "cannabis-compliance",
+      title: (
+        <>
+          Cannabis Compliance
+          <br />
+          Regulatory SaaS Platform
+        </>
+      ),
+      description:
+        "A lightweight SaaS platform integrating METRC and Isolocity to help cannabis businesses streamline compliance, quality tracking, and regulatory reporting.",
+      bullets: [
+        "Designed backend services with Node.js/Express to handle secure API integrations with state and quality systems.",
+        "Implemented role-based access control (RBAC) and JWT authentication to restrict access by user role and tenant.",
+        "Prototyped audit logging system to record every user action, enabling traceability and regulatory readiness.",
+        "Developed AI automation experiments to parse compliance logs and generate corrective action suggestions.",
+        "Structured documentation using ADRs, runbooks, and recipes to support enterprise-grade maintainability."
+      ],
+      impact:
+        "Enables cannabis operators to maintain compliance, improve quality assurance, and reduce regulatory risk through automation and traceable workflows.",
+      technologies: [
+        "JavaScript",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Prisma",
+        "Docker",
+        "Zod",
+        "JWT",
+        "Agile"
+      ],
+      github: "https://github.com/mattgraba/cannabis-compliance", // ✅ swap with actual repo if private/public
       live: "",
       image: ""
     },
     {
       id: "drone-package-delivery-simulation",
-      title: "Drone Package Delivery Simulation",
-      description: "C++, Docker, UML, Design Patterns. Simulated a drone delivery system using Observer and Decorator patterns for modular design. Integrated battery management and theft prevention. Collaborated on GitHub and deployed via Docker. Designed UML diagrams and wrote unit tests. Contact me to view the private github repo (Shared project via University of Minnesota).",
-      technologies: ["C++", "Docker", "UML", "Design Patterns", "Unit Testing", "GitHub"],
+      title: (
+        <>
+          Drone Package Delivery Simulation
+          <br />
+          C++ Distributed Systems Project
+        </>
+      ),
+      description:
+        "C++ simulation of a drone delivery system leveraging design patterns and modular architecture to model real-world logistics challenges.",
+      bullets: [
+        "Implemented core system in C++ using **Observer** and **Decorator** patterns for modularity and extensibility.",
+        "Integrated **battery management system** to optimize drone flight paths and ensure energy efficiency.",
+        "Designed **theft-prevention module** to simulate package security during deliveries.",
+        "Created **UML diagrams** to document system design and communication between modules.",
+        "Developed **unit tests** to validate core features and deployed containerized builds with Docker.",
+        "Collaborated via GitHub using Agile-style task breakdown and version control workflows."
+      ],
+      impact:
+        "Delivered a realistic, extensible simulation of drone-based logistics, demonstrating the application of software design patterns, modular architecture, and testing in a systems-focused project.",
+      technologies: [
+        "C++",
+        "Docker",
+        "UML",
+        "Design Patterns",
+        "Unit Testing",
+        "GitHub"
+      ],
       github: "https://github.com/mattgraba/Drone-Package-Delivery-Simulation",
       live: "",
       image: ""
@@ -69,7 +127,13 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="space-y-6 max-w-5xl px-6 py-12 text-center"
         >
-          <h1 className="text-4xl font-bold text-white mb-8">Projects</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">Featured Projects</h1>
+          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+            A selection of my work spanning <strong>full-stack SaaS platforms</strong>, 
+            <strong> compliance systems</strong>, and <strong>systems-level simulations</strong>. 
+            Each project emphasizes production-grade practices—APIs with validation & security, 
+            audit logging, containerization, and testing.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
@@ -83,7 +147,24 @@ export default function Projects() {
                     <CardTitle>{project.title}</CardTitle>
                     <CardDescription>{project.description}</CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="space-y-4 text-left">
+                    {/* Bullets */}
+                    {project.bullets && (
+                      <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                        {project.bullets.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {/* Impact */}
+                    {project.impact && (
+                      <p className="text-sm font-semibold text-green-400">
+                        Impact: {project.impact}
+                      </p>
+                    )}
+
+                    {/* Technologies */}
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
                         <span
@@ -94,6 +175,8 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
+
+                    {/* Actions */}
                     <div className="flex gap-4">
                       <Button variant="outline" size="sm" asChild>
                         <a href={project.github} target="_blank" rel="noopener noreferrer">
@@ -101,12 +184,14 @@ export default function Projects() {
                           View Code
                         </a>
                       </Button>
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={project.live} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Live Demo
-                        </a>
-                      </Button>
+                      {project.live && (
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={project.live} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            Live Demo
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
