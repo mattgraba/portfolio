@@ -40,7 +40,7 @@ export default function Home() {
             <Github className="w-8 h-8 md:w-10 md:h-10" aria-hidden="true" />
           </a>
           <a
-            href="https://linkedin.com/in/matthew-graba-698266238"
+            href="https://linkedin.com/in/mattgraba"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit Matt Graba's LinkedIn profile (opens in new tab)"

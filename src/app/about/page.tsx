@@ -51,7 +51,7 @@ export default function About() {
               </p>
             </div>
             <a
-              href="/resume/Matthew_Graba_Resume_2025-5.pdf"
+              href="/resume/Matthew_Graba_Resume_2025.pdf"
               download
               className="mt-2 inline-block px-6 py-2 rounded-lg bg-green-900 hover:bg-green-800 text-white font-semibold shadow transition-all duration-200"
             >

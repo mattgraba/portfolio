@@ -57,7 +57,7 @@ export default function Contact() {
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-6 h-6 text-green-400" />
-                  <a href="tel:+11234567890" className="hover:underline">
+                  <a href="tel:+16124427737" className="hover:underline">
                     (612) 442-7737
                   </a>
                 </li>
