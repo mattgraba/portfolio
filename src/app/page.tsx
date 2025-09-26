@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { User, Code, FolderGit2, Mail, Github, Linkedin } from "lucide-react";
+import { event } from "../lib/ga";
 
 const TABS = [
   { label: "About", path: "/about", icon: User },
@@ -12,6 +13,15 @@ const TABS = [
 ];
 
 export default function Home() {
+  const trackClick = (platform: string, url: string) => {
+    event({
+      action: "click_social",
+      category: "engagement",
+      label: platform,
+    });
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <main id="main-content" className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}
@@ -28,27 +38,26 @@ export default function Home() {
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg tracking-tight">
           Matt Graba <span className="text-green-400">| Software Engineering Portfolio</span>
         </h1>
-        {/* Social Icons */}
+
+        {/* Social Icons with GA tracking */}
         <div className="flex gap-6 mb-8" role="complementary" aria-label="Social media links">
-          <a
-            href="https://github.com/mattgraba"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => trackClick("GitHub", "https://github.com/mattgraba")}
             aria-label="Visit Matt Graba's GitHub profile (opens in new tab)"
             className="hover:text-green-400 transition-colors"
           >
             <Github className="w-8 h-8 md:w-10 md:h-10" aria-hidden="true" />
-          </a>
-          <a
-            href="https://linkedin.com/in/mattgraba"
-            target="_blank"
-            rel="noopener noreferrer"
+          </button>
+          <button
+            onClick={() => trackClick("LinkedIn", "https://linkedin.com/in/mattgraba")}
             aria-label="Visit Matt Graba's LinkedIn profile (opens in new tab)"
             className="hover:text-green-400 transition-colors"
           >
             <Linkedin className="w-8 h-8 md:w-10 md:h-10" aria-hidden="true" />
-          </a>
+          </button>
         </div>
+
+        {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-10 justify-center" role="navigation" aria-label="Main navigation">
           {TABS.map((tab) => (
             <Link

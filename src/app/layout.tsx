@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "../components/ui/Navbar"
+import { Inter } from "next/font/google";
+import Script from "next/script";
+import AnalyticsTracker from "../components/AnalyticsTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,21 +16,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const inter = Inter({ subsets: ["latin"] });
+
 export const metadata: Metadata = {
-  title: "Matt Graba - Portfolio",
-  description: "Matt Graba's personal portfolio showcasing web development and design projects",
+  title: "Matt Graba | Portfolio",
+  description: "Software Engineering Portfolio",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-E4VHV3GV58"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-E4VHV3GV58');
+          `}
+        </Script>
         {/* Skip Navigation Link for Accessibility */}
         <a
           href="#main-content"
@@ -36,6 +48,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <Navbar />
+        <AnalyticsTracker />
         {children}
       </body>
     </html>

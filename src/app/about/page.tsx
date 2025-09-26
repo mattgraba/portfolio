@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Code, FolderGit2, Mail } from "lucide-react";
 import Link from "next/link";
+import { event } from "../../lib/ga";
 
 const TABS = [
   { label: "Skills", path: "/skills", icon: Code },
@@ -12,6 +13,14 @@ const TABS = [
 ];
 
 export default function About() {
+  const trackTabClick = (label: string) => {
+    event({
+      action: "click_tab",
+      category: "navigation",
+      label,
+    });
+  };
+
   return (
     <main id="main-content" className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}
@@ -53,16 +62,27 @@ export default function About() {
             <a
               href="/resume/Matthew_Graba_Resume_2025.pdf"
               download
+              onClick={() =>
+                event({
+                  action: "download_resume",
+                  category: "engagement",
+                  label: "Resume PDF",
+                })
+              }
               className="mt-2 inline-block px-6 py-2 rounded-lg bg-green-900 hover:bg-green-800 text-white font-semibold shadow transition-all duration-200"
             >
               Download Resume (PDF)
             </a>
           </div>
+
+
+          {/* Navigation Tabs with GA event tracking */}
           <div className="flex flex-wrap gap-10 justify-center mt-10" role="navigation" aria-label="Page navigation">
             {TABS.map((tab) => (
               <Link
                 key={tab.path}
                 href={tab.path}
+                onClick={() => trackTabClick(tab.label)}
                 className="flex flex-col items-center px-8 py-6 rounded-xl bg-white/20 hover:bg-white/40 text-xl text-white font-semibold shadow-lg backdrop-blur transition-all duration-200 min-w-[120px]"
                 aria-label={`Navigate to ${tab.label} page`}
               >

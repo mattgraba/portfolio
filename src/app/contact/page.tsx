@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { Mail, Phone, User, Github, Linkedin } from "lucide-react";
+import { event } from "../../lib/ga";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -17,15 +18,47 @@ export default function Contact() {
 
     emailjs
       .sendForm(
-        "service_syby29s",   // EmailJS Service ID
-        "template_rpjr5tn",  // EmailJS Template ID
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         formRef.current,
-        "6eg3hbmJ_xzdl7_6I"  // EmailJS Public Key
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       )
       .then(
-        () => setSubmitted(true),
+        () => {
+          setSubmitted(true);
+          event({
+            action: "form_submit",
+            category: "contact",
+            label: "Contact Form",
+          });
+        },
         () => setError("Something went wrong. Please try again.")
       );
+  };
+
+  const trackSocialClick = (platform: string, url: string) => {
+    event({
+      action: "click_social",
+      category: "engagement",
+      label: platform,
+    });
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const trackPhoneClick = (number: string) => {
+    event({
+      action: "click_phone",
+      category: "contact",
+      label: number,
+    });
+  };
+
+  const trackEmailClick = (address: string) => {
+    event({
+      action: "click_email",
+      category: "contact",
+      label: address,
+    });
   };
 
   return (
@@ -57,25 +90,42 @@ export default function Contact() {
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-6 h-6 text-green-400" />
-                  <a href="tel:+16124427737" className="hover:underline">
+                  <a
+                    href="tel:+16124427737"
+                    className="hover:underline"
+                    onClick={() => trackPhoneClick("(612) 442-7737")}
+                  >
                     (612) 442-7737
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-6 h-6 text-green-400" />
-                  <a href="mailto:matt.graba14@gmail.com" className="hover:underline">
+                  <a
+                    href="mailto:matt.graba14@gmail.com"
+                    className="hover:underline"
+                    onClick={() => trackEmailClick("matt.graba14@gmail.com")}
+                  >
                     matt.graba14@gmail.com
                   </a>
                 </li>
               </ul>
 
+              {/* Socials with GA tracking */}
               <div className="flex gap-6 pt-4">
-                <a href="https://github.com/mattgraba" target="_blank" rel="noopener noreferrer">
-                  <Github className="w-7 h-7 hover:text-green-400 transition" />
-                </a>
-                <a href="https://linkedin.com/in/mattgraba" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="w-7 h-7 hover:text-green-400 transition" />
-                </a>
+                <button
+                  onClick={() => trackSocialClick("GitHub", "https://github.com/mattgraba")}
+                  aria-label="Visit GitHub"
+                  className="hover:text-green-400 transition"
+                >
+                  <Github className="w-7 h-7" />
+                </button>
+                <button
+                  onClick={() => trackSocialClick("LinkedIn", "https://linkedin.com/in/mattgraba")}
+                  aria-label="Visit LinkedIn"
+                  className="hover:text-green-400 transition"
+                >
+                  <Linkedin className="w-7 h-7" />
+                </button>
               </div>
             </div>
 

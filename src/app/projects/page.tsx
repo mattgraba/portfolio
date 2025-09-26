@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
 import { User, Code, Mail } from "lucide-react";
 import Link from "next/link";
+import { event } from "../../lib/ga";
 
 const TABS = [
   { label: "About", path: "/about", icon: User },
@@ -15,6 +16,23 @@ const TABS = [
 ];
 
 export default function Projects() {
+  const trackProjectClick = (title: string, href: string) => {
+    event({
+      action: "click_project",
+      category: "projects",
+      label: title,
+    });
+    window.open(href, "_blank", "noopener,noreferrer");
+  };
+
+  const trackTabClick = (label: string) => {
+    event({
+      action: "click_tab",
+      category: "navigation",
+      label,
+    });
+  };
+
   const projects = [
     {
       id: "dev-helper-ai",
@@ -70,7 +88,7 @@ export default function Projects() {
         "JWT",
         "Agile"
       ],
-      github: "https://github.com/mattgraba/cannabis-compliance", // ✅ swap with actual repo if private/public
+      github: "https://github.com/mattgraba/cannabis-compliance",
       live: "",
       image: ""
     },
@@ -176,10 +194,15 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    {/* Actions */}
+                    {/* Actions with GA tracking */}
                     <div className="flex gap-4">
                       <Button variant="outline" size="sm" asChild>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => trackProjectClick(project.id, "github")}
+                        >
                           <Github className="w-4 h-4 mr-2" />
                           View Code
                         </a>
@@ -199,7 +222,7 @@ export default function Projects() {
             ))}
           </div>
           
-          {/* Add your sentence here */}
+          {/* Closing Sentence */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -211,11 +234,17 @@ export default function Projects() {
             </p>
           </motion.div>
           
-          <div className="flex flex-wrap gap-10 justify-center mt-10" role="navigation" aria-label="Page navigation">
+          {/* Navigation Tabs with GA tracking */}
+          <div
+            className="flex flex-wrap gap-10 justify-center mt-10"
+            role="navigation"
+            aria-label="Page navigation"
+          >
             {TABS.map((tab) => (
               <Link
                 key={tab.path}
                 href={tab.path}
+                onClick={() => trackTabClick(tab.label)}
                 className="flex flex-col items-center px-8 py-6 rounded-xl bg-white/20 hover:bg-white/40 text-xl text-white font-semibold shadow-lg backdrop-blur transition-all duration-200 min-w-[120px]"
                 aria-label={`Navigate to ${tab.label} page`}
               >
