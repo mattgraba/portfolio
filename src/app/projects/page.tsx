@@ -16,13 +16,13 @@ const TABS = [
 ];
 
 export default function Projects() {
-  const trackProjectClick = (title: string, href: string) => {
+
+  const trackProjectClick = (label: string) => {
     event({
       action: "click_project",
       category: "projects",
-      label: title,
+      label,
     });
-    window.open(href, "_blank", "noopener,noreferrer");
   };
 
   const trackTabClick = (label: string) => {
@@ -53,7 +53,7 @@ export default function Projects() {
       ],
       impact: "Reduced debugging time by providing AI-generated explanations and fixes within existing developer workflows.",
       technologies: ["JavaScript", "React", "Express", "MongoDB", "Node.js", "Docker", "Jest", "Postman"],
-      github: "https://github.com/mattgraba/dev-helper-ai",
+      github: "https://github.com/mattgraba/dev-helper",
       live: "",
       image: ""
     },
@@ -201,7 +201,7 @@ export default function Projects() {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={() => trackProjectClick(project.id, "github")}
+                          onClick={() => trackProjectClick(project.id)}
                         >
                           <Github className="w-4 h-4 mr-2" />
                           View Code
