@@ -61,7 +61,7 @@ export default function Projects() {
       id: "cannabis-compliance",
       title: (
         <>
-          Cannabis Compliance
+          Compliance Platform
           <br />
           Regulatory SaaS Platform
         </>
@@ -88,7 +88,7 @@ export default function Projects() {
         "JWT",
         "Agile"
       ],
-      github: "https://github.com/mattgraba/cannabis-compliance",
+      github: "https://github.com/mattgraba/compliance-platform",
       live: "",
       image: ""
     },
