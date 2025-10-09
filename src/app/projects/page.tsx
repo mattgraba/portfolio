@@ -35,10 +35,10 @@ export default function Projects() {
 
   const projects = [
     {
-      id: "dev-helper-ai",
+      id: "dev-helper",
       title: (
         <>
-          Dev Helper AI
+          Dev Helper
           <br />
           Full-Stack Debugging Assistant
         </>
@@ -58,7 +58,7 @@ export default function Projects() {
       image: ""
     },
     {
-      id: "cannabis-compliance",
+      id: "compliance-platform",
       title: (
         <>
           Compliance Platform

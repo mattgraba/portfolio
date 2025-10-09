@@ -60,7 +60,7 @@ export default function About() {
               </p>
             </div>
             <a
-              href="/resume/Matthew_Graba_Resume_2025.pdf"
+              href="/resume/Matthew_Graba_Resume.pdf"
               download
               onClick={() =>
                 event({
