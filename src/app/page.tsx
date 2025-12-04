@@ -35,27 +35,9 @@ export default function Home() {
 
       {/* Overlay */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/40 min-h-screen">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg tracking-tight">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-14 drop-shadow-lg tracking-tight">
           Matt Graba <span className="text-green-400">| Dev Portfolio</span>
         </h1>
-
-        {/* Social Icons with GA tracking */}
-        <div className="flex gap-6 mb-8" role="complementary" aria-label="Social media links">
-          <button
-            onClick={() => trackClick("GitHub", "https://github.com/mattgraba")}
-            aria-label="Visit Matt Graba's GitHub profile (opens in new tab)"
-            className="hover:text-green-400 transition-colors"
-          >
-            <Github className="w-8 h-8 md:w-10 md:h-10" aria-hidden="true" />
-          </button>
-          <button
-            onClick={() => trackClick("LinkedIn", "https://linkedin.com/in/mattgraba")}
-            aria-label="Visit Matt Graba's LinkedIn profile (opens in new tab)"
-            className="hover:text-green-400 transition-colors"
-          >
-            <Linkedin className="w-8 h-8 md:w-10 md:h-10" aria-hidden="true" />
-          </button>
-        </div>
 
         {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-10 justify-center" role="navigation" aria-label="Main navigation">
