@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { User, Code, FolderGit2, Mail, Github, Linkedin } from "lucide-react";
-import { event } from "../lib/ga";
+import { User, Code, FolderGit2, Mail } from "lucide-react";
 
 const TABS = [
   { label: "About", path: "/about", icon: User },
@@ -13,14 +12,6 @@ const TABS = [
 ];
 
 export default function Home() {
-  const trackClick = (platform: string, url: string) => {
-    event({
-      action: "click_social",
-      category: "engagement",
-      label: platform,
-    });
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
 
   return (
     <main id="main-content" className="relative w-full min-h-screen overflow-hidden">
