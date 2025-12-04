@@ -58,37 +58,40 @@ export default function Projects() {
       image: ""
     },
     {
-      id: "compliance-platform",
+      id: "peak-fantasy",
       title: (
         <>
-          Compliance Platform
+          PEAK Fantasy
           <br />
-          Regulatory SaaS Platform
+          Advanced NBA Fantasy Analytics Platform (Startup Project)
         </>
       ),
       description:
-        "A lightweight SaaS platform integrating METRC and Isolocity to help cannabis businesses streamline compliance, quality tracking, and regulatory reporting.",
+        "A full-stack fantasy basketball platform built from the ground up, combining advanced analytics, real-time ETL pipelines, custom scoring engines, and domain-driven backend architecture. Designed as a long-term startup concept aimed at delivering a modern fantasy experience beyond traditional platforms.",
       bullets: [
-        "Designed backend services with Node.js/Express to handle secure API integrations with state and quality systems.",
-        "Implemented role-based access control (RBAC) and JWT authentication to restrict access by user role and tenant.",
-        "Prototyped audit logging system to record every user action, enabling traceability and regulatory readiness.",
-        "Developed AI automation experiments to parse compliance logs and generate corrective action suggestions.",
-        "Structured documentation using ADRs, runbooks, and recipes to support enterprise-grade maintainability."
+        "Engineered a domain-driven backend architecture using Node.js/Express, Prisma, and PostgreSQL — with clearly separated domains for Players, Stats, Users, Leagues, and Scoring.",
+        "Built ingestion pipelines (ETL) to normalize player identity + season stats from multiple data providers into a unified internal schema.",
+        "Developed a configurable scoring engine allowing leagues to define custom scoring models, modifiers, and computation logic.",
+        "Designed scalable relationships via ERDs, making the system extensible for future league types, multi-tenant hosting, and advanced tournament modes.",
+        "Implemented secure authentication (JWT), role management, layered validation, and upcoming admin UI for commissioner controls.",
+        "Established a long-term product roadmap including: coach drafting, advanced realism metrics, fatigue/momentum modeling, and predictive analytics."
       ],
       impact:
-        "Enables cannabis operators to maintain compliance, improve quality assurance, and reduce regulatory risk through automation and traceable workflows.",
+        "Sets the foundation for a modern, analytics-driven fantasy ecosystem — merging NBA data pipelines with customizable league mechanics and a scalable backend foundation.",
       technologies: [
-        "JavaScript",
+        "TypeScript",
         "Node.js",
         "Express",
-        "PostgreSQL",
         "Prisma",
-        "Docker",
+        "PostgreSQL",
         "Zod",
-        "JWT",
-        "Agile"
+        "Docker",
+        "React",
+        "Next.js",
+        "Tailwind",
+        "OpenAI API"
       ],
-      github: "https://github.com/mattgraba/compliance-platform",
+      github: "https://github.com/mattgraba/peak-fantasy-public",
       live: "",
       image: ""
     },

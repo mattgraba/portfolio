@@ -45,15 +45,16 @@ export default function Skills() {
                 <div>
                   <p className="font-bold text-green-400 mb-2">Primary</p>
                   <ul className="space-y-1">
-                    <li>Java</li>
-                    <li>Python</li>
                     <li>JavaScript (ES6+)</li>
-                    <li>SQL</li>
+                    <li>TypeScript</li>
+                    <li>Python</li>
+                    <li>SQL (PostgreSQL)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-bold text-gray-300 mb-2">Experienced</p>
                   <ul className="space-y-1 text-gray-200/90">
+                    <li>Java</li>
                     <li>C</li>
                     <li>C++</li>
                     <li>C#</li>
@@ -62,6 +63,7 @@ export default function Skills() {
                   </ul>
                 </div>
               </div>
+
             </motion.div>
 
             {/* Tools & Technologies */}
@@ -70,14 +72,17 @@ export default function Skills() {
               className="bg-black/60 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/10"
             >
               <h2 className="flex items-center gap-2 text-2xl font-semibold mb-4">
-                <Wrench className="w-6 h-6 text-blue-400" /> Tools & Technologies
+                <Wrench className="w-6 h-6 text-blue-400" /> Tools & Tech
               </h2>
               <ul className="space-y-2 text-left">
-                <li>React, Node.js, Express, MongoDB</li>
-                <li>REST APIs, JWT Authentication</li>
-                <li>Git, Docker, Linux</li>
-                <li>Postman, JUnit</li>
+                <li>React, Next.js, Tailwind, shadcn/ui</li>
+                <li>Node.js, Express, Prisma ORM, PostgreSQL</li>
+                <li>REST APIs, Domain-Driven Design, JWT Auth</li>
+                <li>Docker, Linux, Git, GitHub Actions</li>
+                <li>Postman, Jest, Supertest</li>
+                <li>OpenAI API, AI-assisted developer tooling</li>
               </ul>
+
             </motion.div>
 
             {/* Concepts */}
@@ -89,12 +94,15 @@ export default function Skills() {
                 <Lightbulb className="w-6 h-6 text-yellow-400" /> Concepts
               </h2>
               <ul className="space-y-2 text-left">
-                <li>Object-Oriented Design</li>
-                <li>Client-Server Architecture</li>
-                <li>Software Design Patterns</li>
-                <li>System Design & SDLC</li>
-                <li>Unit Testing & QA</li>
-                <li>System & Process Documentation</li>
+                <li>Domain-Driven Design (DDD)</li>
+                <li>Layered Architecture (routes → controllers → services → domains → DB)</li>
+                <li>System Design & API Architecture</li>
+                <li>Authentication & Authorization (JWT, RBAC)</li>
+                <li>Data Modeling, ERD Design, SQL Schema Design</li>
+                <li>ETL Pipelines & Data Normalization</li>
+                <li>Software Design Patterns & Best Practices</li>
+                <li>Unit Testing & Quality Assurance</li>
+                <li>Technical Writing & System Documentation</li>
               </ul>
             </motion.div>
           </div>
