@@ -150,10 +150,9 @@ export default function Projects() {
         >
           <h1 className="text-4xl font-bold text-white mb-4">Featured Projects</h1>
           <p className="text-lg text-white/80 max-w-2xl mx-auto">
-            A selection of my work spanning <strong>full-stack SaaS platforms</strong>, 
-            <strong> compliance systems</strong>, and <strong>systems-level simulations</strong>. 
-            Each project emphasizes production-grade practices—APIs with validation & security, 
-            audit logging, containerization, and testing.
+            A selection of products and systems I&#39;ve built across developer tooling, fantasy sports engines, and backend platforms. 
+            My work emphasizes production-grade engineering——typed and validated APIs, secure authentication, modular domain architecture, 
+            containerized environments, orchestration layers, and reliable testing workflows.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (

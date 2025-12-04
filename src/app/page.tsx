@@ -36,7 +36,7 @@ export default function Home() {
       {/* Overlay */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/40 min-h-screen">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg tracking-tight">
-          Matt Graba <span className="text-green-400">| Software Engineering Portfolio</span>
+          Matt Graba <span className="text-green-400">| Dev Portfolio</span>
         </h1>
 
         {/* Social Icons with GA tracking */}
