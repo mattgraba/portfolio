@@ -45,7 +45,6 @@ export default function Skills() {
                 <div>
                   <p className="font-bold text-green-400 mb-2">Primary</p>
                   <ul className="space-y-1">
-                    <li>JavaScript (ES6+)</li>
                     <li>TypeScript</li>
                     <li>Python</li>
                     <li>SQL (PostgreSQL)</li>
